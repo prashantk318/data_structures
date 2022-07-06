@@ -1,4 +1,4 @@
-package com.queue;
+package com.queue.array;
 
 public class Main {
 	public static void main(String[] args) {
@@ -7,9 +7,12 @@ public class Main {
 		System.out.println(arr.isEmpty());
 		arr.enQueue(10);
 		arr.enQueue(25);
-		int result = arr.deQueue();
+		//int result = arr.deQueue();
+		int result = arr.peek();
 		System.out.println(result);
-		
+		int result1 = arr.peek();
+		System.out.println("peek elements"+result1);
+		arr.deleteQueue();
 	}
 
 }

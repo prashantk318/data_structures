@@ -1,4 +1,4 @@
-package com.queue;
+package com.queue.array;
 
 public class QueueArray {
 	int[]arr;
@@ -56,5 +56,18 @@ public class QueueArray {
 	  }
   }
   
+  public int peek() {
+	  if(!isEmpty()) {
+		  return arr[begininingofQueue]; 
+	  }else {
+		  System.out.println("Queue is Empty");
+		  return -1;
+	  }
+  }
+  
+  public void deleteQueue() {
+	  arr=null;
+	  System.out.println("The Queue is deleted completely");
+  }
   
 }
