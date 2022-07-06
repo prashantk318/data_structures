@@ -1,4 +1,4 @@
-package com.LinkedList;
+package com.LinkedList.SinglyLinkedList;
 
 public class Node {
 	public int data;
