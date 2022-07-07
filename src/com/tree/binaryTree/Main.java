@@ -26,7 +26,11 @@ public class Main {
 		node.insert("N9");
 		node.levelOrder();
 		node.searchTree("N9");
-		
+		System.out.println(node.getDeepestNode().value);
+		node.deleteDeepestNode();
+		node.levelOrder();
+		node.deleteNode("N3");
+		node.levelOrder();
 	}
 
 }
