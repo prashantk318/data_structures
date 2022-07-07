@@ -1,4 +1,4 @@
-package com.tree.binaryTree;
+package com.tree.binaryTree.linkedlist;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -99,6 +99,7 @@ public class BinarytreeLinkedList {
 				queue.add(presentNode.right);
 			}
 	  }
+	  
   }
   
  public BinaryNode getDeepestNode() {
@@ -159,6 +160,10 @@ public class BinarytreeLinkedList {
 	 System.out.println("node does not exists");
  }
  
+ public void deleteBT() {
+	 root = null;	 
+	 System.out.println("binary tree deleted successfully");
+ }
 
 
 }

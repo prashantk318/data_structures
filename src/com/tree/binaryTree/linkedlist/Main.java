@@ -1,4 +1,4 @@
-package com.tree.binaryTree;
+package com.tree.binaryTree.linkedlist;
 
 public class Main {
 	public static void main(String[] args) {
