@@ -12,6 +12,10 @@ public class Main {
 		tree.insert(100);
 		tree.insert(20);
 		tree.insert(40);
+		tree.preOrder(tree.root);
+		tree.inOrder(tree.root);
+		tree.postOrder(tree.root);
+		tree.levelOrder();
 	}
 
 }
