@@ -17,6 +17,8 @@ public class Main {
 		tree.postOrder(tree.root);
 		tree.levelOrder();
 		tree.search(tree.root, 40);
+		tree.deleteNode(tree.root, 40);
+		tree.search(tree.root, 40);
 	}
 
 }
