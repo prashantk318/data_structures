@@ -73,4 +73,26 @@ public class BinarySearchTree {
 			queue.add(node.right);
 		}}
 	}
+	
+	BinaryNode search(BinaryNode node, int value) {
+		if(node==null) {
+			System.out.println("value of"+value+"does not found");
+			return null;
+		}else if (node.value == value) {
+			System.out.println("value of"+value+" found");
+			return node;
+		}else if(value<node.value) {
+			return search(node.left, value);
+		}else {
+			return search(node.right, value);
+		}
+	}
+	
+	public static BinaryNode minimumNode(BinaryNode root) {
+		if(root.left == null) {
+			return root;
+		}else {
+			return minimumNode(root.left);
+		}
+	}
 }

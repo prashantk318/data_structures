@@ -16,6 +16,7 @@ public class Main {
 		tree.inOrder(tree.root);
 		tree.postOrder(tree.root);
 		tree.levelOrder();
+		tree.search(tree.root, 40);
 	}
 
 }
