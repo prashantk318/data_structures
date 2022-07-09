@@ -72,4 +72,72 @@ public class AVL {
 			return root.right;
 		}
 	}
+	
+public int getHeight(BinaryNode node) {
+	if(node == null) {
+		return 0;
+	}
+	return node.height;
+}
+
+private BinaryNode rotateRight(BinaryNode disBalancedNode) {
+	BinaryNode newNode = disBalancedNode.left;
+	disBalancedNode.left = disBalancedNode.left.right;
+	newNode.right = disBalancedNode;
+	disBalancedNode.height = 1+ Math.max(getHeight(disBalancedNode.left), getHeight(disBalancedNode.right));
+	newNode.height = 1+ Math.max(getHeight(newNode.left), getHeight(newNode.right));
+	return newNode;
+}
+
+private BinaryNode rotateLeft(BinaryNode disBalancedNode) {
+	BinaryNode newNode = disBalancedNode.right;
+	disBalancedNode.right = disBalancedNode.right.left;
+	newNode.left = disBalancedNode;
+	disBalancedNode.height = 1+ Math.max(getHeight(disBalancedNode.left), getHeight(disBalancedNode.right));
+	newNode.height = 1+ Math.max(getHeight(newNode.left), getHeight(newNode.right));
+	return newNode;
+}
+
+public int getBalance(BinaryNode node) {
+	if(node==null) {
+		return 0;
+	}
+	return getHeight(node.left) - getHeight(node.right);
+}
+
+private BinaryNode insertNode(BinaryNode node, int value) {
+	if(node==null) {
+		BinaryNode newNode = new BinaryNode();
+		newNode.value = value;
+		newNode.height = 1;
+		return newNode;
+	}else if(value<node.value) {
+		node.left = insertNode(node.left, value);
+	}else {
+		node.right = insertNode(node.right, value);
+	}
+	node.height = 1+ Math.max(getHeight(node.left), getHeight(node.right));
+	int balance = getBalance(node);
+	if(balance > 1 && value<node.left.value) {
+		return rotateRight(node);
+	}
+	if(balance > 1 && value>node.left.value) {
+		node.left = rotateLeft(node.left);
+		return rotateRight(node);
+	}
+	if(balance < -1 && value > node.right.value) {
+		return rotateLeft(node);
+	}
+	if(balance <-1 && value<node.right.value) {
+		node.right = rotateRight(node.right);
+		return rotateLeft(node);
+		
+	}
+	return node;
+}
+
+public void insert(int value) {
+	root = insertNode(root, value);
+}
+
 }
