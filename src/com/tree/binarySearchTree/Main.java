@@ -19,6 +19,10 @@ public class Main {
 		tree.search(tree.root, 40);
 		tree.deleteNode(tree.root, 40);
 		tree.search(tree.root, 40);
+		BinaryNode node = tree.deleteNode(tree.root, 40);
+		tree.inOrder(tree.root);
+		tree.deleteBST();
+		tree.inOrder(tree.root);
 	}
 
 }
