@@ -9,6 +9,9 @@ public class Main {
 		avl.insert(15);
 		avl.insert(20);
 		avl.levelOrder();
+		avl.delete(5);
+		avl.levelOrder();
+		avl.deleteAVL();
 		
 		
 	}

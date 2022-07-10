@@ -108,7 +108,7 @@ public int getBalance(BinaryNode node) {
 private BinaryNode insertNode(BinaryNode node, int value) {
 	if(node==null) {
 		BinaryNode newNode = new BinaryNode();
-		newNode.value = value;
+ 		newNode.value = value;
 		newNode.height = 1;
 		return newNode;
 	}else if(value<node.value) {
@@ -140,4 +140,63 @@ public void insert(int value) {
 	root = insertNode(root, value);
 }
 
+public static BinaryNode minimumnode(BinaryNode node) {
+	if(node.left==null) {
+		return node;
+	}
+	else {
+		return minimumnode(node.left);
+	}
+}
+
+public BinaryNode deleteNode(BinaryNode node, int value) {
+	if(node ==null) {
+		System.out.println("value not found");
+		return null;
+	}
+	if(value<node.value) {
+		node.left = deleteNode(node.left, value);
+	}else if(value>node.value) {
+		node.right = deleteNode(node.right, value);
+	}else {
+		if(node.left !=null && node.right !=null) {
+			BinaryNode temp = node;
+			BinaryNode minNode = minimumnode(temp.right);
+			node.value = minNode.value;
+			node.right = deleteNode(minNode.right, minNode.value);
+		}else if (node.left !=null) {
+			node = node.left;
+		}else if (node.right !=null) {
+			node = node.right;
+		}else {
+			node = null;
+		}
+	}
+	int balance = getBalance(node);
+	if(balance>1 && getBalance(node.left)>=0) {
+		return rotateRight(node);
+	}
+	if(balance>1 && getBalance(node.left)<0) {
+		node.left = rotateLeft(node.left);
+		return rotateRight(node);
+	}
+	if(balance<-1 && getBalance(node.right)<=0) {
+		return rotateLeft(node);
+	}
+	if(balance<-1 && getBalance(node.right)>0) {
+		node.right = rotateRight(node.right);
+		return rotateLeft(node);
+	}
+	return node;
+}
+
+public void delete(int value) {
+	root =  deleteNode(root, value);
+}
+
+public void deleteAVL() {
+	root = null;
+	System.out.println("successfully deleted AVL");
+	
+}
 }
