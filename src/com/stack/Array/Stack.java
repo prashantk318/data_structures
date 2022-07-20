@@ -1,4 +1,4 @@
-package com.stack;
+package com.stack.Array;
 
 public class Stack {
 	int []arr;
