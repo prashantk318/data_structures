@@ -1,0 +1,76 @@
+package com.graph.matrix;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+
+public class Graph {
+	ArrayList<GraphNode>nodeList = new ArrayList<>();
+	int [][] adjacencymatrix;
+	public Graph(ArrayList<GraphNode>nodeList) {
+		this.nodeList = nodeList;
+		adjacencymatrix = new int [nodeList.size()][nodeList.size()];
+	}
+
+	public void addUndirectedEdge(int i,int j) {
+		adjacencymatrix[i][j]=1;
+		adjacencymatrix[j][i]=1;
+	}
+	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		s.append("  ");
+		for(int i =0;i<nodeList.size();i++) {
+			s.append(nodeList.get(i).name +" ");
+		}
+		s.append("\n");
+		for(int i =0;i<nodeList.size();i++) {
+			s.append(nodeList.get(i).name+" ");
+			for(int j:adjacencymatrix[i]) {
+				s.append((j)+" ");
+			}
+			s.append("\n");
+		}
+		return s.toString();
+	}
+	
+	//get Neighbours
+	public ArrayList<GraphNode> getNeighbours(GraphNode node){
+		ArrayList<GraphNode>neighbours = new ArrayList<>();
+		int nodeIndex = node.index;
+		for(int i =0; i<adjacencymatrix.length;i++) {
+			if(adjacencymatrix[nodeIndex][i]==1) {
+				neighbours.add(nodeList.get(i));
+			}
+		}
+		return neighbours;
+	}
+	
+	//BSF internal
+	
+	void bsfVisit(GraphNode node) {
+		LinkedList<GraphNode>queue = new LinkedList<>();
+		queue.add(node);
+		while(!queue.isEmpty()) {
+			GraphNode currentNode = queue.remove(0);
+			currentNode.Isvisited = true;
+			System.out.print(currentNode.name+ " ");
+			ArrayList<GraphNode>neighbours = getNeighbours(currentNode);
+			for(GraphNode neighbour:neighbours) {
+				if(!neighbour.Isvisited) {
+				queue.add(neighbour);
+				neighbour.Isvisited = true;
+				}
+			}
+			
+		}
+		
+	}
+	
+	public void bfs() {
+		for(GraphNode node:nodeList) {
+			if(!node.Isvisited) {
+				bsfVisit(node);
+			}
+		}
+	}
+}
