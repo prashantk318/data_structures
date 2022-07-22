@@ -1,6 +1,7 @@
 package com.graph.list;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 
 
@@ -34,5 +35,27 @@ public class Graph {
 		}
 		return s.toString();
 	}
-
+//BSF internal
+	void bfsVisit(GraphNode node) {
+		LinkedList<GraphNode>queue = new LinkedList<GraphNode>();
+		queue.add(node);
+		if(!queue.isEmpty()) {
+			GraphNode currentNode = queue.remove(0);
+			currentNode.isVisited = true;
+			System.out.print(currentNode.name + " ");
+			for(GraphNode neighbour:currentNode.neighbours) {
+				if(!neighbour.isVisited) {
+				queue.add(neighbour);
+				//neighbour.isVisited = true;
+				}
+			}
+		}
+	}
+	void bfs() {
+		for(GraphNode node:nodeList) {
+			if(!node.isVisited) {
+				bfsVisit(node);
+			}
+		}
+	}
 }

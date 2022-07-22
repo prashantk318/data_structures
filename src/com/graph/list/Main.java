@@ -3,9 +3,6 @@ package com.graph.list;
 import java.util.ArrayList;
 
 
-
-
-
 public class Main {
 	public static void main(String[] args) {
 		ArrayList<GraphNode>nodeList = new ArrayList<>();
@@ -22,5 +19,6 @@ public class Main {
 		g.addUndirectedEdge(2, 3);
 		g.addUndirectedEdge(3, 4);
 		System.out.println(g.toString());
+		g.bfs();
 	}
 }
