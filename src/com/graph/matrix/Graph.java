@@ -2,6 +2,7 @@ package com.graph.matrix;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Stack;
 
 public class Graph {
 	ArrayList<GraphNode>nodeList = new ArrayList<>();
@@ -70,6 +71,31 @@ public class Graph {
 		for(GraphNode node:nodeList) {
 			if(!node.Isvisited) {
 				bsfVisit(node);
+			}
+		}
+	}
+	
+	void dfsVisit(GraphNode node) {
+		Stack<GraphNode>stack = new Stack<>();
+		stack.push(node);
+		while(!stack.isEmpty()) {
+		GraphNode currentNode = stack.pop();
+		currentNode.Isvisited = true;
+		System.out.print(currentNode.name+ " ");
+		ArrayList<GraphNode>neighbours = getNeighbours(currentNode);
+		for(GraphNode neighbour:neighbours) {
+			if(!neighbour.Isvisited) {
+				stack.push(neighbour);
+				neighbour.Isvisited = true;
+			}
+		}
+		
+		}
+	}
+	public void dfs() {
+		for(GraphNode node:nodeList) {
+			if(!node.Isvisited) {
+				dfsVisit(node);
 			}
 		}
 	}

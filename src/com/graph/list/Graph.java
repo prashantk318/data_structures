@@ -2,6 +2,9 @@ package com.graph.list;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Stack;
+
+
 
 
 
@@ -39,14 +42,14 @@ public class Graph {
 	void bfsVisit(GraphNode node) {
 		LinkedList<GraphNode>queue = new LinkedList<GraphNode>();
 		queue.add(node);
-		if(!queue.isEmpty()) {
+		while(!queue.isEmpty()) {
 			GraphNode currentNode = queue.remove(0);
 			currentNode.isVisited = true;
 			System.out.print(currentNode.name + " ");
 			for(GraphNode neighbour:currentNode.neighbours) {
 				if(!neighbour.isVisited) {
 				queue.add(neighbour);
-				//neighbour.isVisited = true;
+				neighbour.isVisited = true;
 				}
 			}
 		}
@@ -57,5 +60,29 @@ public class Graph {
 				bfsVisit(node);
 			}
 		}
+	}
+	
+	//DFS internal
+	void dfsVisit(GraphNode node) {
+		Stack<GraphNode>stack = new Stack<GraphNode>();
+		stack.push(node);
+		while(!stack.isEmpty()) {
+			GraphNode currentNode = stack.pop();
+			currentNode.isVisited = true;
+			System.out.print(currentNode.name + " ");
+			for(GraphNode neighbour:currentNode.neighbours) {
+				if(!neighbour.isVisited) {
+					stack.push(neighbour);
+					neighbour.isVisited = true;
+				}
+			}
+		}
+	}
+	
+	void dfs() {
+		for(GraphNode node:nodeList) {
+			if(!node.isVisited) {
+				dfsVisit(node);
+			}}
 	}
 }

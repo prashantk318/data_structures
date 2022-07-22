@@ -18,7 +18,8 @@ public class Main {
 		g.addUndirectedEdge(2, 3);
 		g.addUndirectedEdge(3, 4);
 		System.out.println(g.toString());
-		g.bfs();
+		//g.bfs();
+		g.dfs();
 	}
 
 }
