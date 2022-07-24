@@ -8,6 +8,8 @@ import java.util.Stack;
 
 
 
+
+
 public class Graph {
 	ArrayList<GraphNode>nodeList = new ArrayList<>();
 	
@@ -84,5 +86,33 @@ public class Graph {
 			if(!node.isVisited) {
 				dfsVisit(node);
 			}}
+	}
+	
+	public void addDirectedEdge(int i, int j) {
+		GraphNode first = nodeList.get(i);
+		GraphNode second = nodeList.get(j);
+		first.neighbours.add(second);
+		
+	}
+	void topologicalVisit(GraphNode node, Stack<GraphNode>stack) {
+		for(GraphNode neighbour:node.neighbours) {
+			if(!neighbour.isVisited) {
+				topologicalVisit(neighbour, stack);
+			}
+		}
+		node.isVisited = true;
+		stack.push(node);
+	}
+	void topologicalSort() {
+		Stack<GraphNode>stack = new Stack<>();
+		for(GraphNode node:nodeList) {
+			if(!node.isVisited) {
+				topologicalVisit(node, stack);
+			}
+		}
+		
+		while(!stack.isEmpty()) {
+			System.out.println(stack.pop().name+" ");
+		}
 	}
 }

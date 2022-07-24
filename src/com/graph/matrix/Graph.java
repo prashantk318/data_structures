@@ -99,4 +99,35 @@ public class Graph {
 			}
 		}
 	}
+	//topological sort
+	public void addDirectedEdge(int i, int j) {
+		adjacencymatrix[i][j]=1;
+	}
+	void topologicalVisit(GraphNode node, Stack<GraphNode>stack) {
+		ArrayList<GraphNode>neighbours = getNeighbours(node);
+		for(GraphNode nodes:neighbours) {
+			if(!nodes.Isvisited) {
+				topologicalVisit(nodes,stack);
+				
+			}
+			node.Isvisited = true;
+			stack.push(node);
+		}
+		
+	}
+	
+	void topologicalSort() {
+		Stack<GraphNode>stack = new Stack<>();
+		for(GraphNode node:nodeList) {
+			if(!node.Isvisited) {
+				topologicalVisit(node, stack);
+			}
+		}
+		while(!stack.isEmpty()) {
+			System.out.print(stack.pop().name+" ");
+			
+		}
+	}
+	
+	
 }

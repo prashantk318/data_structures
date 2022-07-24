@@ -12,14 +12,21 @@ public class Main {
 		nodeList.add(new GraphNode("D", 3));
 		nodeList.add(new GraphNode("E", 4));
 		Graph g = new Graph(nodeList);
-		g.addUndirectedEdge(0, 1);
-		g.addUndirectedEdge(0, 2);
-		g.addUndirectedEdge(0, 3);
-		g.addUndirectedEdge(1, 4);
-		g.addUndirectedEdge(2, 3);
-		g.addUndirectedEdge(3, 4);
-		System.out.println(g.toString());
-		g.bfs();
+		/*
+		 * g.addUndirectedEdge(0, 1); g.addUndirectedEdge(0, 2); g.addUndirectedEdge(0,
+		 * 3); g.addUndirectedEdge(1, 4); g.addUndirectedEdge(2, 3);
+		 * g.addUndirectedEdge(3, 4);
+		 */
+		
+		g.addDirectedEdge(0, 1);
+		g.addDirectedEdge(0, 2);
+		g.addDirectedEdge(0, 3);
+		g.addDirectedEdge(1, 4);
+		g.addDirectedEdge(2, 3);
+		g.addDirectedEdge(3, 4);
+		//System.out.println(g.toString());
+		//g.bfs();
 		//g.dfs();
+		g.topologicalSort();
 	}
 }
