@@ -129,5 +129,32 @@ public class Graph {
 		}
 	}
 	
+	public void printGraph(GraphNode node) {
+		if(node.parent !=null) {
+			printGraph(node.parent);
+		}
+		System.out.println(node.name);
+	}
 	
+	//single Source short Path problem
+	void bsfVisitSSS(GraphNode node) {
+		LinkedList<GraphNode>queue = new LinkedList<>();
+		queue.add(node);
+		while(!queue.isEmpty()) {
+			GraphNode currentNode= queue.remove(0);
+			currentNode.Isvisited = true;
+			System.out.print("Printing path for node:"+currentNode.name + ": ");
+			printGraph(currentNode);
+			System.out.println();
+			ArrayList<GraphNode>neighbours = getNeighbours(currentNode);
+			for(GraphNode neighbour:neighbours) {
+				if(!neighbour.Isvisited) {
+					queue.add(neighbour);
+					neighbour.Isvisited = true;
+					neighbour.parent = currentNode;
+				}
+			}
+		}
+		
+	}
 }

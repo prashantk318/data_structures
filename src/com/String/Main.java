@@ -7,6 +7,23 @@ public class Main {
 	public static void main(String[] args) {
 		boolean result = isUnique("ha");
 		System.out.println(result);
+		Map<Character, Integer>map = new HashMap<>();
+		String name = "Prashant";
+		char[]ch = name.toCharArray();
+		int counter=0;
+		for(int i=0;i<ch.length;i++) {
+			counter++;
+			map = new HashMap<>();
+			map.put(ch[i], counter);
+		}
+		for(Map.Entry<Character, Integer>maps:map.entrySet()) {
+			System.out.println("key values for number of times"+" "+maps.getValue());
+		}
+		
+		StringBuilder build = new StringBuilder();
+		build.append("Hello");
+		char chw = build.charAt(0);
+		System.out.println("character at"+chw);
 	}
 	
 	public static boolean isUnique(String word) {

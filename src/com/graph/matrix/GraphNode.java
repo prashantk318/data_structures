@@ -5,6 +5,7 @@ public class GraphNode {
 	public int index;
 	
 	public boolean Isvisited = false;
+	GraphNode parent;
 	
 	public GraphNode(String name, int index) {
 		this.name = name;

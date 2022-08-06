@@ -115,4 +115,32 @@ public class Graph {
 			System.out.println(stack.pop().name+" ");
 		}
 	}
+	//Single Source Shortest Path
+	
+	public static void pathPrint(GraphNode node) {
+		if(node.parent !=null) {
+			pathPrint(node.parent);
+		}
+		System.out.print(node.name+" ");
+	}
+	
+	public void bsfSSS(GraphNode node) {
+		LinkedList<GraphNode>queue = new LinkedList<>();
+		queue.add(node);
+		while(!queue.isEmpty()) {
+			GraphNode currentNode = queue.remove(0);
+			currentNode.isVisited = true;
+			System.out.print("Printing path for node:"+currentNode.name + ": ");
+			pathPrint(currentNode);
+			System.out.println();
+			for(GraphNode neighbour:currentNode.neighbours) {
+				if(!neighbour.isVisited) {
+					queue.add(neighbour);
+					neighbour.isVisited = true;
+					neighbour.parent = currentNode;
+				}
+			}
+		}
+		
+	}
 }
