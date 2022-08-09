@@ -23,7 +23,7 @@ public class Main {
 		StringBuilder build = new StringBuilder();
 		build.append("Hello");
 		char chw = build.charAt(0);
-		System.out.println("character at"+chw);
+		
 	}
 	
 	public static boolean isUnique(String word) {
@@ -38,11 +38,16 @@ public class Main {
 			}
 			
 		}
-		for(Map.Entry<Character, Integer>map:maps.entrySet()) {
-			if(map.getValue()>1) {
-				return false;
-			}
+		/*
+		 * for(Map.Entry<Character, Integer>map:maps.entrySet()) { if(map.getValue()>1)
+		 * { return false; } }
+		 */
+		
+		long count = maps.entrySet().stream().filter(s ->s.getValue()>1).count();
+		if(count>1) {
+			return false;
 		}
+		
 		
 		return true;
 	}
