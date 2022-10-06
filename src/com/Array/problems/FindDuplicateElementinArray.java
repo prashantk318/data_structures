@@ -5,7 +5,7 @@ import java.util.List;
 
 public class FindDuplicateElementinArray {
 	public static void main(String[] args) {
-		int arr[] = {1,2,3,3,2,4,5};
+		int arr[] = {1,2,3,3,2,4,5,5};
 		List<Integer> list = findDuplicateElement(arr);
 		for(Integer l:list) {
 			System.out.println(l);
